@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck7lk43vcuoaw"]
+
+[ext_resource type="Texture2D" uid="uid://bpgrwau8j3rgr" path="res://assets/sprites/enemies/dummy/dummy.png" id="1_0gs5x"]
+[ext_resource type="Script" uid="uid://dabn0no8feyjd" path="res://scenes/enemies/dummy/dummy.gd" id="1_005t2"]
+
+[sub_resource type="Gradient" id="Gradient_005t2"]
+colors = PackedColorArray(0.678431, 0.466667, 0.341176, 1, 0.313726, 0.313726, 0.313726, 0)
+
+[node name="Dummy" type="RigidBody2D" groups=["enemy"]]
+script = ExtResource("1_005t2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0gs5x")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(4.00499, 7.9657)
+polygon = PackedVector2Array(1.99501, 0.0342951, 2.99501, -0.965705, 2.99501, -4.9657, 1.99501, -6.9657, -0.00499153, -8.9657, -1.00499, -8.9657, -1.00499, -13.9657, -3.00499, -15.9657, -7.00499, -15.9657, -9.00499, -13.9657, -9.00499, -7.9657, -10.005, -6.9657, -11.005, -4.9657, -11.005, -0.965705, -10.005, 0.0342951, -7.00499, 0.0342951, -7.00499, 1.0343, -6.00499, 1.0343, -6.00499, 5.0343, -10.005, 5.0343, -11.005, 6.0343, -11.005, 8.0343, 1.99501, 8.0343, 1.99501, 6.0343, 0.995008, 5.0343, -3.00499, 5.0343, -3.00499, 1.0343, -2.00499, 1.0343, -2.00499, 0.0342951)
+
+[node name="DyingParticles" type="CPUParticles2D" parent="."]
+position = Vector2(1, 4)
+emitting = false
+amount = 835
+lifetime = 2.17
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.39
+emission_shape = 3
+emission_rect_extents = Vector2(8, 12)
+direction = Vector2(0, -1)
+spread = 78.3
+gravity = Vector2(0, -3)
+initial_velocity_max = 19.41
+color_ramp = SubResource("Gradient_005t2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -12.0
+theme_override_font_sizes/font_size = 7
+text = "Dummy"
