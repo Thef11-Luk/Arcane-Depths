@@ -3,12 +3,16 @@ extends CharacterBody2D
 # --- Exported Variables ---
 @export var max_jump_trigger_time: float = 0.5  # Maximum time jump can be triggered
 @export var jump_velocity: float = -300.0       # Initial jump velocity
+@export var lowest_camera_y_position: float = 0.0
+
+# --- Node References ---
+@onready var camera_2d: Camera2D = $Camera2D
 
 # --- Constants ---
-const SPEED = 100.0                             # Horizontal movement speed
+const SPEED = 100.0 # Horizontal movement speed
 
 # --- Member Variables ---
-var jump_trigger_time = 0.0                     # Tracks jump trigger duration
+var jump_trigger_time: float = 0.0  # Tracks jump trigger duration
 
 func _physics_process(delta: float) -> void:
     # --- Gravity ---
@@ -55,3 +59,14 @@ func _ready() -> void:
         false
     )  # Resize image based on canvas scale
     Input.set_custom_mouse_cursor(image, Input.CURSOR_ARROW, image.get_size() / 2.0)  # Set custom cursor
+    
+func _process(_delta: float) -> void:
+    move_camera()   # handling camera movement
+    
+    
+func move_camera() -> void:
+    if is_on_floor():
+        camera_2d.position.y = lowest_camera_y_position    #moves the camera up- or downwards if the player is on the floor
+
+func shake_camera(intensity) -> void:
+    camera_2d.shake_amount = intensity
