@@ -15,7 +15,6 @@ floor_constant_speed = true
 script = ExtResource("1_8afob")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 texture = SubResource("PlaceholderTexture2D_dovo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

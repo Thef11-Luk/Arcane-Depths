@@ -1,29 +1,34 @@
 extends RigidBody2D
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
-@onready var dying_particles: CPUParticles2D = $DyingParticles
-@onready var name_label: Label = $NameLabel
+# --- Node References ---
+@onready var sprite_2d: Sprite2D = $Sprite2D                        # Enemy sprite
+@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D  # Collision shape
+@onready var dying_particles: CPUParticles2D = $DyingParticles      # Particles on death
+@onready var name_label: Label = $NameLabel                         # Name label above enemy
 
-var hp: float = 1000.0
-
+# --- Enemy Properties ---
+var hp: float = 1000.0                                              # Enemy health
 
 func hit(damage: float) -> void:
+    # --- Apply Damage ---
     hp -= damage
     if hp <= 0.0:
         die()
     hit_animation(damage)
 
 func hit_animation(damage) -> void:
+    # --- Visual Feedback for Hit ---
     modulate_texture()
     damage_label(damage)
     
 func modulate_texture() -> void:
+    # --- Flash Red on Hit ---
     sprite_2d.modulate = Color(1.0, 0.0, 0.0, 1.0)
     await get_tree().create_timer(0.1).timeout
     sprite_2d.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func damage_label(damage) -> void:
+    # --- Show Floating Damage Number ---
     var rng = RandomNumberGenerator.new()
     var label = Label.new()
     label.text = str(int(damage))
@@ -39,6 +44,7 @@ func damage_label(damage) -> void:
     remove_child(label)
     
 func die() -> void:
+    # --- Death Sequence ---
     gravity_scale = 0.0
     sprite_2d.texture = null
     collision_polygon_2d.disabled = true
