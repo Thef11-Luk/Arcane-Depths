@@ -10,7 +10,7 @@ Hier dokumentiere ich die Entwicklung meines Spiels **Arcane Depths**. Jede Vers
 
 ## [2025-06-18]
 - Bodendesign in der Lobby
-    - Überarbeitetes Teilset mit neuer Erdtextur
+    - Überarbeitetes Tileset mit neuer Erdtextur
     - Shader zum Verdunkeln nach unten
 - Kamera
     - Vertikale, veränderbare, Positionslimitierung
@@ -18,3 +18,8 @@ Hier dokumentiere ich die Entwicklung meines Spiels **Arcane Depths**. Jede Vers
     - Shaking-Effekt
 - Lobbydesign
     - 2 Buschtypen
+    
+## [2025-06-19]
+- Lobbydesign
+    - 3 neue Büsche
+    - kleiner Baum
