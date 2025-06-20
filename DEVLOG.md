@@ -23,3 +23,7 @@ Hier dokumentiere ich die Entwicklung meines Spiels **Arcane Depths**. Jede Vers
 - Lobbydesign
     - 3 neue Büsche
     - kleiner Baum
+
+## [2025-06-20]
+- Lobbydesign
+    - Einfache Wolken, die mithilfe von Shader sich bewegen und loopen

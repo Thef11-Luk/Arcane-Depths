@@ -1,13 +1,19 @@
-[gd_scene load_steps=20 format=4 uid="uid://d0oivko0e5ylb"]
+[gd_scene load_steps=23 format=4 uid="uid://d0oivko0e5ylb"]
 
 [ext_resource type="Script" uid="uid://b2tbj48a3cuh8" path="res://scenes/lobby/lobby.gd" id="1_stkcr"]
 [ext_resource type="TileSet" uid="uid://iem6cgf5bsq2" path="res://scenes/lobby/placeholder_tileset.tres" id="1_ukx7c"]
 [ext_resource type="Texture2D" uid="uid://jm6kntcx4gvj" path="res://assets/sprites/lobby/floor_tileset.png" id="2_i6yme"]
 [ext_resource type="Texture2D" uid="uid://cvl67o64nx20f" path="res://assets/sprites/lobby/objects/tree_1.png" id="2_l1n8d"]
+[ext_resource type="Shader" uid="uid://bqkyt0esammwg" path="res://scenes/lobby/clouds.gdshader" id="2_m8hcm"]
 [ext_resource type="Shader" uid="uid://cm68chbld13o0" path="res://scenes/lobby/underground_tiles_shader.gdshader" id="3_2tt0b"]
 [ext_resource type="PackedScene" uid="uid://dh6b0i4i2hbnv" path="res://scenes/player/player.tscn" id="3_mlusu"]
 [ext_resource type="PackedScene" uid="uid://uor65y14ik3" path="res://scenes/player/weapons/bouncy_deagle/bouncy_deagle.tscn" id="4_jekxk"]
 [ext_resource type="Texture2D" uid="uid://co0lc42vg3r6h" path="res://assets/sprites/lobby/floor_decoration_tileset.png" id="5_iytm0"]
+[ext_resource type="Texture2D" uid="uid://c7rdjk3bqy4t7" path="res://assets/sprites/lobby/background/cloud_1.png" id="9_l1n8d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5l4x7"]
+shader = ExtResource("2_m8hcm")
+shader_parameter/speed = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iytm0"]
 shader = ExtResource("3_2tt0b")
@@ -129,6 +135,22 @@ pattern_0 = SubResource("TileMapPattern_iytm0")
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_stkcr")
 
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+texture_repeat = 1
+offset_left = -489.0
+offset_top = -122.0
+offset_right = 1238.0
+offset_bottom = 256.0
+color = Color(0.30980393, 0.56078434, 0.7294118, 1)
+
+[node name="Clouds" type="Sprite2D" parent="Background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5l4x7")
+position = Vector2(321, 61)
+texture = ExtResource("9_l1n8d")
+
 [node name="DecoObjects" type="Node2D" parent="."]
 
 [node name="Tree1" type="Sprite2D" parent="DecoObjects"]
@@ -164,7 +186,7 @@ tile_set = SubResource("TileSet_m8hcm")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_mlusu")]
-position = Vector2(323, 223)
+position = Vector2(306, 224)
 max_jump_trigger_time = 0.2
 jump_velocity = -250.0
 
