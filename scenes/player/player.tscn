@@ -1,25 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh6b0i4i2hbnv"]
+[gd_scene load_steps=6 format=3 uid="uid://dh6b0i4i2hbnv"]
 
 [ext_resource type="Script" uid="uid://dgoyou3pwg75d" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://c5g2husyqi053" path="res://assets/sprites/player/player.png" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://bm14hjhc0aeul" path="res://scenes/player/camera/camera.tscn" id="3_gmlin"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dovo2"]
-size = Vector2(32, 64)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8afob"]
-radius = 12.5
+radius = 13.0
 height = 60.0
+
+[sub_resource type="Gradient" id="Gradient_gmlin"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 floor_constant_speed = true
 script = ExtResource("1_8afob")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_dovo2")
+texture = ExtResource("2_gmlin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 2)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_8afob")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_gmlin")]
 position = Vector2(0, -75)
+limit_smoothed = true
+position_smoothing_speed = 2.5
+
+[node name="DyingParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.38
+emission_shape = 3
+emission_rect_extents = Vector2(16, 32)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 126.21
+color_ramp = SubResource("Gradient_gmlin")

@@ -4,12 +4,12 @@ extends CharacterBody2D
 @export var max_jump_trigger_time: float = 0.5  # Maximum time jump can be triggered
 @export var jump_velocity: float = -300.0       # Initial jump velocity
 @export var lowest_camera_y_position: float = 0.0
+@export var SPEED = 100.0 # Horizontal movement speed
 
 # --- Node References ---
 @onready var camera_2d: Camera2D = $Camera2D
-
-# --- Constants ---
-const SPEED = 100.0 # Horizontal movement speed
+@onready var dying_particles: CPUParticles2D = $DyingParticles
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 # --- Member Variables ---
 var jump_trigger_time: float = 0.0  # Tracks jump trigger duration

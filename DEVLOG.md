@@ -27,3 +27,6 @@ Hier dokumentiere ich die Entwicklung meines Spiels **Arcane Depths**. Jede Vers
 ## [2025-06-20]
 - Lobbydesign
     - Einfache Wolken, die mithilfe von Shader sich bewegen und loopen
+- Löschen von Lobby
+- Erstellen von Tutorial-Szene
+    - Spieler respawnt wenn er in Abgrund fällt und führt eine Animation aus
