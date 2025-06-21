@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh6b0i4i2hbnv"]
+
+[ext_resource type="Script" uid="uid://dgoyou3pwg75d" path="res://actors/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://b27fkqhgueotc" path="res://components/health_component.gd" id="3_ax26v"]
+[ext_resource type="Script" uid="uid://vya5ou0ksw6w" path="res://components/animated_sprite_component.gd" id="3_lsqbn"]
+[ext_resource type="Script" uid="uid://bja6jpfbttg0s" path="res://components/hurtbox_component.gd" id="4_lsqbn"]
+
+[sub_resource type="Gradient" id="Gradient_gmlin"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8afob"]
+radius = 13.0
+height = 60.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+floor_constant_speed = true
+script = ExtResource("1_8afob")
+
+[node name="DyingParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.38
+emission_shape = 3
+emission_rect_extents = Vector2(16, 32)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 126.21
+color_ramp = SubResource("Gradient_gmlin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_8afob")
+
+[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="."]
+animation = &""
+speed_scale = 5.0
+script = ExtResource("3_lsqbn")
+metadata/_custom_type_script = "uid://vya5ou0ksw6w"
+
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("3_ax26v")
+metadata/_custom_type_script = "uid://b27fkqhgueotc"
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+script = ExtResource("4_lsqbn")
+is_player = true
+metadata/_custom_type_script = "uid://bja6jpfbttg0s"

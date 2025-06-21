@@ -30,3 +30,11 @@ Hier dokumentiere ich die Entwicklung meines Spiels **Arcane Depths**. Jede Vers
 - Löschen von Lobby
 - Erstellen von Tutorial-Szene
     - Spieler respawnt wenn er in Abgrund fällt und führt eine Animation aus
+
+## [2025-06-21] - Komponent-System
+- HealthComponent
+- HurtboxComponent
+- HitboxComponent
+- AnimatedSpriteComponent
+- DamageComponent
+- ProjectileStatusEffectComponent
